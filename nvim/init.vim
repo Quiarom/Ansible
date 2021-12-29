@@ -1,25 +1,33 @@
+set backspace=indent,eol,start
+set tabstop=4 softtabstop=2
 filetype plugin indent on
-set scrolloff=8
-set number
-set relativenumber
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
 set encoding=UTF-8
-set autoindent
+set updatetime=300
+set relativenumber
+set tabpagemax=40
 set laststatus=2
-set mouse+=a
-set paste
+set scrolloff=8
+set smartindent
+set autoindent
+set expandtab
+set linebreak
+set wildmenu
+set nobackup
+set undofile
+set mouse=a
+set nowrap
+set hidden
+set number
+syntax on
+set ruler
+set title
 
 call plug#begin('~/.vim/plugged')
 
 " The visual plugin
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'itchyny/lightline.vim'
 Plug 'glepnir/dashboard-nvim'
 Plug 'vim-airline/vim-airline'
-Plug 'folke/trouble.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 let g:dashboard_default_executive = 'telescope'
 
@@ -48,11 +56,6 @@ Plug 'sirver/ultisnips'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
-" Nvim TreeSitter
-
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/playground'
-
 " Show error hints and highlights
 Plug 'vim-syntastic/syntastic'
 
@@ -73,25 +76,35 @@ colorscheme dracula
 let mapleader = " "
 let g:user_emmet_leader_key= ","
 
+" Airline Config
+let g:airline_powerline_fonts = 1
+
+" Mappings
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+
 nnoremap <leader>ff :Telescope find_files<CR>
 nnoremap <leader>fg :Telescope live_grep<cr>
+
 nnoremap <leader>pc :NERDTreeClose<CR>
 nnoremap <leader>pn :NERDTree<CR>
+
 nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>p :Prettier<CR>
+nnoremap <leader>ts :tabs<CR>
+nnoremap <leader>tc :tabclose<CR>
+
+nnoremap <leader>pp :Prettier<CR>
 
 " Code in Lua
 
 " Colorizer Plugin
 lua require'colorizer'.setup()
 
+" Lightline
 let g:lightline = {
-      \ 'colorscheme': 'darcula',
+      \ 'colorscheme': 'dracula',
       \ }
 
 " Autosave
-
 lua << EOF
 local autosave = require("autosave")
 
@@ -112,29 +125,4 @@ autosave.setup(
         debounce_delay = 135
     }
 )
-EOF
-
-" Trouble Plugin
-
-lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
-" Nvim TreeSitter
-
-lua << EOF
-    require('nvim-treesitter.configs').setup {
-
-        highlight = {
-            enable = true,
-        },
-        indent = {
-            enable = true,
-        }
-
-    }
 EOF
