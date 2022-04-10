@@ -1,9 +1,6 @@
 - hosts: localhost
   become: true
   become_user: root
-  vars: 
-     source_key: "./.ssh/id_rsa"
-     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks: 
     - name: Update apt
       apt:
@@ -12,9 +9,10 @@
         state: present
       tags:
         - ssh
+        - dotfiles
         - node
         - zsh
   tasks:
-    - include: ./ssh.yml
-    - include: ./zsh.yml  
-    - include: ./node.yml
+    - include: ./ansible/dotfiles.yml
+    - include: ./ansible/zsh.yml  
+    - include: ./ansible/node.yml

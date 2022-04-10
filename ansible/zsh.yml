@@ -1,14 +1,3 @@
-- hosts: localhost
-  become: true
-  become_user: root
-  pre_tasks:
-    - name: Update cache
-      apt:
-        update_cache: true
-      tags:
-        - node
-        - zsh
-  tasks:
   - name: Install zsh
     apt: name=zsh
     tags:
