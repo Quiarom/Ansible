@@ -8,7 +8,6 @@
         update_cache: true
         state: present
       tags:
-        - ssh
         - dotfiles
         - node
         - zsh
