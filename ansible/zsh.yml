@@ -1,0 +1,29 @@
+- hosts: localhost
+  become: true
+  become_user: root
+  pre_tasks:
+    - name: Update cache
+      apt:
+        update_cache: true
+      tags:
+        - node
+        - zsh
+  tasks:
+  - name: Install zsh
+    apt: name=zsh
+    tags:
+    - zsh
+  - name: Change shell
+    shell: chsh -s `which zsh`
+    tags:
+    - zsh
+  - name: Install starship
+    shell: curl -sS https://starship.rs/install.sh | sh
+    tags:
+    - starship
+  - name: Install zsh plugin autosuggestions
+    ansible.builtin.git:
+      repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+      dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    tags:
+    - zsh

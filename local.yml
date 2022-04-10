@@ -1,0 +1,20 @@
+- hosts: localhost
+  become: true
+  become_user: root
+  vars: 
+     source_key: "./.ssh/id_rsa"
+     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  pre_tasks: 
+    - name: Update apt
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+        - install
+        - node
+        - zsh
+  tasks:
+    - include: ./ssh.yml
+    - include: ./zsh.yml  
+    - include: ./node.yml
