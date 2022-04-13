@@ -8,10 +8,8 @@
         update_cache: true
         state: present
       tags:
-        - dotfiles
         - node
         - zsh
   tasks:
-    - include: ./ansible/dotfiles.yml
     - include: ./ansible/zsh.yml  
     - include: ./ansible/node.yml
