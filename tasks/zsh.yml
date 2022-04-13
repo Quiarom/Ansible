@@ -9,7 +9,7 @@
   - name: Install starship
     shell: curl -sS https://starship.rs/install.sh | sh
     tags:
-    - starship
+    - zsh
   - name: Install zsh plugin autosuggestions
     ansible.builtin.git:
       repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
