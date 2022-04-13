@@ -11,5 +11,5 @@
         - node
         - zsh
   tasks:
-    - include: ./ansible/zsh.yml  
-    - include: ./ansible/node.yml
+    - include: ./tasks/zsh.yml  
+    - include: ./tasks/node.yml
