@@ -1,0 +1,22 @@
+# base
+build-essential
+curl
+git
+unzip
+zip
+ca-certificates
+software-properties-common
+
+# shell/tools
+zsh
+tmux
+ripgrep
+fd-find
+jq
+bat
+fzf
+eza
+stow
+
+# editors
+neovim

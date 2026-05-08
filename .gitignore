@@ -1,0 +1,28 @@
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+*.log
+
+# Secrets and private material
+secrets/*
+!secrets/README.md
+!secrets/env.example
+
+# SSH/GPG/cloud credentials never in git
+**/.ssh/
+**/.gnupg/
+**/.aws/
+**/.config/gcloud/
+**/.kube/config
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/.env
+**/.env.*
+
+# Local generated state
+.bootstrap-cache/
